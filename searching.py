@@ -5,6 +5,22 @@ import json
 cwd_path = os.getcwd()
 
 
+def linear_search(searched_list, tested_integer):
+    dictionary = {}
+    indx = 0
+    counter = 0
+    positions_list = []
+    for number in searched_list:
+        if number == tested_integer:
+            positions_list.append(indx)
+            counter = counter + 1
+        indx = indx + 1
+
+    dictionary["positions"] = positions_list
+    dictionary["count"] = counter
+    return dictionary
+
+
 def read_data(file_name, field):
     """
     Reads json file and returns sequential data.
@@ -26,6 +42,8 @@ def read_data(file_name, field):
 def main():
     sequential_data = read_data("sequential.json", "unordered_numbers")
     print(sequential_data)
+    search = linear_search(sequential_data, 0)
+    print(search)
     pass
 
 
